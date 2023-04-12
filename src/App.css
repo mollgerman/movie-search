@@ -1,0 +1,28 @@
+.page{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+
+li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
