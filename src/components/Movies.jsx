@@ -1,22 +1,28 @@
 import React from 'react'
+import { Text, UnorderedList, ListItem } from '@chakra-ui/react'
 
 const ListOfMovies = ({ movies }) => {
   return (
-    <ul>
+    <UnorderedList
+      display='flex'
+      flexDir='row'
+      flexWrap='wrap'
+      gap='4rem'
+    >
       {movies.map(movie => (
-        <li key={movie.id}>
-          <h2>{movie.title}</h2>
-          <p>{movie.year}</p>
+        <ListItem key={movie.id} alignSelf='center' m='auto'>
+          <Text fontSize='2xl' fontWeight='bold'>{movie.title}</Text>
+          <Text fontSize='lg' fontWeight='bold'>{movie.year}</Text>
           <img src={movie.poster} alt={movie.title} />
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </UnorderedList>
   )
 }
 
 const NoMovies = () => {
   return (
-    <p>No movies were found for this search.</p>
+    <Text fontSize='2xl'>No movies were found for this search.</Text>
   )
 }
 

@@ -3,6 +3,7 @@ import './App.css'
 import { Movies } from './components/Movies'
 import useMovies from './hooks/useMovies'
 import debounce from 'just-debounce-it'
+import { Box, Text, FormControl, FormLabel, Input, Button, Checkbox } from '@chakra-ui/react'
 
 function useSearch () {
   const [search, updateSearch] = useState('')
@@ -65,27 +66,55 @@ function App () {
   }
 
   return (
-    <div className="page">
-      <header>
-        <h1>Movie Searcher</h1>
-        <form className="form" onSubmit={handleSubmit}>
-          <input onChange={handleChange} value={search} type="text" name="query" id="" placeholder='Avengers, Fast & Furious'/>
+    <Box className="page"
+      display='flex'
+      alignItems='center'
+      justifyContent='start'
+      maxWidth='60vw'
+      minHeight='100vh'
+      pt='10vh'
+      bgColor='teal900'
+    >
+      <Box
+        display='flex'
+        justifyContent='center'
+        alignItems='center'
+        px='2rem'
+        flexDirection='column'
+        mb='2rem'
+      >
+        <Text fontSize='5xl' mb='2rem'>Movie Searcher</Text>
+        <FormControl className="form" onSubmit={handleSubmit}>
+          <Input
+            onChange={handleChange}
+            value={search}
+            type="text"
+            name="query"
+            id=""
+            placeholder='Avengers, Fast & Furious'
+            width='40vw'
+          />
 
-          <button type="submit">Search</button>
+          <Button type="submit" mb='3.5px' ml='1rem'>Search</Button>
 
-        </form>
-        <label>Sort by year</label>
-        <input list="sort" onChange={handleSort} checked={sort} />
+          <Box display='flex' width='fit-content' mt='5px' bg='gray.200' borderRadius='5px' pt='5px' px='15px'>
+            <FormLabel>Sort by year</FormLabel>
+            <Checkbox onChange={handleSort} checked={sort} border='white' />
+          </Box>
+        </FormControl>
 
         {error && <p style={{ color: 'red' }}>{error}</p>}
-      </header>
+      </Box>
 
-      <main>
+      <Box
+        display='flex'
+        alignItems='center'
+      >
         {
           loading ? <p>Cargando...</p> : <Movies movies={movies} />
         }
-      </main>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

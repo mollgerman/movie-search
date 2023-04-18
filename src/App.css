@@ -25,4 +25,9 @@ li {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 2rem;
+}
+
+body{
+  background-color: rgb(44, 139, 139);
 }
